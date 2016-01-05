@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Coke Cooler</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+	<script type="text/javascript" src="assets/js/jquery.js"></script>
+	<script src="assets/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="assets/js/data.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/scripts.js"></script>
+	<script  src="assets/js/touch.js"></script>
+	<script type="text/javascript">
+		$( "#draggable" ).draggable({ axis: "x", scroll: false, containment:[-150, 0, 250, 0],handle: ".handle"});
+
+	</script>
+</head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="background-gradient"></div>
+	<div class="wrap">
+		<header class="technology">
+			<div class="col-sm-6"><a class="main-logo" href="index.html">Coca-Cola</a></div>
+			<div class="col-sm-6 header-tagline">Equipment Technology</div>
+		</header>
+		<div class="technology-menu left-nav col-sm-3">
+			<ul>
+				<li>
+					<img src="assets/img/tech-light.png" alt="light">
+					<h5>Light</h5>
+				</li>
+			</ul>
+			<ul>
+				<li class="active">
+					<a class="overview" href="#" class="activate-lightbox">Overview</a>
+				</li>
+				<li>
+					<a class="test-1" href="#" class="activate-lightbox">Test 1</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-sm-9 technology-content">
+			<h1>Can you see the light?</h1>
+			<div class="overview active">
+				<div class="slider-container">
+					<img class="featured-img" src="assets/img/tech-featured-image.png" />
+					<div class="slider-toggles">
+						<div class="prev"><a href="#rotate-product-carousel" role="button" data-slide="prev"><img src="assets/img/arrow-toggle.png" alt="arrow"></a></div>
+						<div class="next"><a href="#rotate-product-carousel" role="button" data-slide="next"><img src="assets/img/arrow-toggle.png" alt="arrow"></a></div>
+					</div>
+				</div>
+				<p class="tech-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut felis non elit vehicula posuere. Integer pretium libero sit amet felis tincidunt, sit amet dictum nibh vulputate.</p>
+			</div>
+			<div class="test-1">
+				<div class="light-test-container">
+					<div class="light-test-left col-sm-12">
+						<div id="draggable" class="dragger"><img class="handle" src="assets/img/handle.png" alt="handle"></div>
+					</div>
+					<div class="befor-after-container">
+						<div class="col-sm-6">
+							<img src="assets/img/light-dark.png" alt="Dark">
+							<p>xxxxxxLorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						</div>	
+						<div class="col-sm-6">
+							<img src="assets/img/light-light.png" alt="Light">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- right menu -->
+	<div class="right-nav">
+		<ul>
+			<li><a class="back-btn" href="">Back</a></li>
+			<li><a class="menu-toggle" href="">Menu</a></li>
+		</ul>
+	</div>
+	<div class="menu-slideout-container">
+		<a class="menu-close" href="">close</a>
+		<div class="menu-slide-out">
+			<div class="row row1">
+				<div class="slideout-header">
+					<h1 class="col-sm-9">Explore global innovation!</h1>
+					<img src="assets/img/coke-logo.png" alt="Coke" class="col-sm-3">
+				</div>
+				<div class="menu-item col-sm-4">
+					<div class="menu-item-bg">	
+						<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+					</div>
+					<h2><a href="eqp-menu.html">Equipment</a></h2>
+					<a href="eqp-menu.html">Experience the way we serve Coca-Cola to the world</a>
+				</div>
+				<div class="menu-item col-sm-4">
+					<div class="menu-item-bg">	
+						<a href="eqp-menu.html"><img src="assets/img/pkg-surge.png" alt="packaging"></a>
+					</div>
+					<h2><a href="eqp-menu.html">Packaging</a></h2>
+					<a href="eqp-menu.html">View innovative packaging solutions consumers love</a>
+				</div>
+				<div class="menu-item col-sm-4">
+					<div class="menu-item-bg">	
+						<a href="eqp-menu.html"><img style="visibility:hidden" src="assets/img/pkg-surge.png" alt="packaging"></a>
+					</div>
+					<h2><a href="eqp-menu.html">ETA</a></h2>
+					<a href="eqp-menu.html">View innovative packaging solutions consumers love</a>
+				</div>
+			</div>
+			<div class="row row2 white-border-top">
+				<h2>Equipment</h2>
+				<div class="menu-item menu-nav-item col-sm-3">
+					<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+					<a href="eqp-menu.html">Title</a>
+				</div>
+				<div class="menu-item menu-nav-item col-sm-3">
+					<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+					<a href="eqp-menu.html">Title</a>
+				</div>
+				<div class="menu-item menu-nav-item col-sm-3">
+					<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+					<a href="eqp-menu.html">Title</a>
+				</div>
+				<div class="menu-item menu-nav-item col-sm-3">
+					<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+					<a href="eqp-menu.html">Title</a>
+				</div>
+				<div class="menu-item menu-nav-item col-sm-3">
+					<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+					<a href="eqp-menu.html">Title</a>
+				</div>
+				<div class="menu-item menu-nav-item col-sm-3">
+					<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+					<a href="eqp-menu.html">Title</a>
+				</div>
+			</div>
+			<div class="row row3">
+				<div class="section white-border-top">
+					<h2>Equipment Technology</h2>
+					<div class="menu-item col-sm-4">
+						<a href=""><img src="assets/img/tech-sound-active.png" alt="Audio"></a>
+						<a href="">Audio Reduction</a>
+					</div>
+					<div class="menu-item col-sm-4">
+						<a href=""><img src="assets/img/tech-ibeacon.png" alt="Ibeacon"></a>
+						<a href="">iBeacon</a>
+					</div>
+					<div class="menu-item col-sm-4">
+						<a href=""><img src="assets/img/tech-light.png" alt="Light"></a>
+						<a href="">Light</a>
+					</div>
+				</div>
+				<div class="section align-center white-border-top">
+					<h2>Intellectual Property</h2>
+					<div class="menu-item">
+						<a href=""><img src="assets/img/see-all-icon.png" alt="Light"></a>
+						<a href="">See All</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="transparent-bg"></div>
+</body>
+</html>
