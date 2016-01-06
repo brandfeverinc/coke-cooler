@@ -12,8 +12,9 @@
 	<script type="text/javascript" src="assets/js/scripts.js"></script>
 	<script  src="assets/js/touch.js"></script>
 	<script type="text/javascript">
-		$( "#draggable" ).draggable({ axis: "x", scroll: false, containment:[-150, 0, 250, 0],handle: ".handle"});
-
+		$( document ).ready(function() {
+			$( "#draggable" ).draggable({ axis: "x", scroll: false, containment:[-150, 0, 250, 0],handle: ".handle"});
+		});
 	</script>
 </head>
 	<meta charset="UTF-8">
@@ -62,7 +63,7 @@
 					<div class="befor-after-container">
 						<div class="col-sm-6">
 							<img src="assets/img/light-dark.png" alt="Dark">
-							<p>xxxxxxLorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 						</div>	
 						<div class="col-sm-6">
 							<img src="assets/img/light-light.png" alt="Light">
@@ -141,23 +142,23 @@
 				<div class="section white-border-top">
 					<h2>Equipment Technology</h2>
 					<div class="menu-item col-sm-4">
-						<a href=""><img src="assets/img/tech-sound-active.png" alt="Audio"></a>
-						<a href="">Audio Reduction</a>
+						<a data-id="tech-sound" href="tech-sound.html" class="icon-mousedown"><img src="assets/img/tech-sound.png" alt="Audio"></a>
+						<a href="tech-sound.html">Audio Reduction</a>
 					</div>
 					<div class="menu-item col-sm-4">
-						<a href=""><img src="assets/img/tech-ibeacon.png" alt="Ibeacon"></a>
-						<a href="">iBeacon</a>
+						<a data-id="tech-ibeacon" href="tech-ibeacon.html" class="icon-mousedown"><img src="assets/img/tech-ibeacon.png" alt="Ibeacon"></a>
+						<a href="tech-ibeacon.html">iBeacon</a>
 					</div>
 					<div class="menu-item col-sm-4">
-						<a href=""><img src="assets/img/tech-light.png" alt="Light"></a>
-						<a href="">Light</a>
+						<a data-id="tech-light" href="tech-light.html" class="icon-mousedown"><img src="assets/img/tech-light.png" alt="Light"></a>
+						<a href="tech-light.html">Light</a>
 					</div>
 				</div>
 				<div class="section align-center white-border-top">
 					<h2>Intellectual Property</h2>
 					<div class="menu-item">
-						<a href=""><img src="assets/img/see-all-icon.png" alt="Light"></a>
-						<a href="">See All</a>
+						<a href="technology.html" data-id="ip" class="icon-mousedown"><img src="assets/img/ip.png" alt="Intellectual Property"></a>
+						<a href="technology.html">See All</a>
 					</div>
 				</div>
 			</div>

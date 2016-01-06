@@ -84,6 +84,7 @@ body{
 	overflow-x: hidden;
 	font-family: 'gotham_bookregular';
 }
+.bold{font-family: 'gotham_boldregular';}
 .clear{clear: both;}
 h1{font-size: 33px;text-align: left;margin:0;}
 h2,h6{margin: 0;}
@@ -143,11 +144,12 @@ Home
 }
 .background-gradient{
 	background-image: initial;
-	background: #cd1d20; /* Old browsers */
-	background: -moz-linear-gradient(top,  #f40000 0%, #cd1d20 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top,  #f40000 0%, #cd1d20 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom,  #f40000 0%, #cd1d20 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cd1d20', endColorstr='#f40000',GradientType=0 ); /* IE6-9 */
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f40000+0,cd1d20+54,a00305+100 */
+	background: #f40000; /* Old browsers */
+	background: -moz-linear-gradient(top,  #f40000 0%, #cd1d20 54%, #a00305 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #f40000 0%,#cd1d20 54%,#a00305 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #f40000 0%,#cd1d20 54%,#a00305 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f40000', endColorstr='#a00305',GradientType=0 ); /* IE6-9 */
 }
 .overlay{
 	background-color: rgba(244,0,0,.7);
@@ -250,6 +252,9 @@ Menu Page
   	 left: 50%;
   	 transform: translate(-50%, -60%);
   	 width: 80%;
+}
+.product-menu-content .option img{
+	max-width: 160px
 }
 
 /*===============================================
@@ -371,7 +376,7 @@ left Nav
 }
 .left-nav .active{
 	color: #f40000;
-	background-color: #fff;
+	/*background-color: #fff;*/
 }
 .product-left-nav li a{
 	border:none;
@@ -429,7 +434,7 @@ Product Page
 }
 .product-lightbox-container .bottom-section{
 	background-color: #fff;
-	border-bottom: #f40000 solid 55px;
+	border-bottom: #B30C08 solid 55px;
 	position: relative;
 	padding-bottom: 40px;
 }
@@ -531,7 +536,7 @@ Product Page
 }
 .bottom-section,.info-content,.form-section{height: 400px;}
 .info-content,.form-section{top: 0;left: 0; position: absolute;width: 100%;z-index: 2}
-.form-section{top: 400px;z-index: 3;background-color: #f40000; padding: 20px;box-sizing: border-box;}
+.form-section{top: 400px;z-index: 3;background-color: #B30C08; padding: 20px;box-sizing: border-box;}
 .form-section h2{font-size: 30px; display: inline-block; width: 80%;margin-bottom: 20px;}
 .form-section input{
 	color: #000;
@@ -574,6 +579,7 @@ Product Page
 .info-content-section{display: none}
 .bottom-section .content .active{display: block}
 
+.open-not-active{display: none;}
 /*video*/
 #product-video-carousel .carousel-inner iframe{
 	margin: 20px auto;
@@ -766,7 +772,8 @@ header.technology div{
 	margin-left: 15%;
 }
 .tech-description{clear: both;margin-top: 20px;float: left;font-size: 29px;font-weight: 200;}
-.technology-menu li.active{background-color: #fff;}
+.technology-menu li.active{border:0!important;padding:0 !important;}
+.technology-menu li.active a{border:15px solid #fff;}
 .technology-content > div{display: none;}
 .technology-content .active{display: block;}
 .pod{
