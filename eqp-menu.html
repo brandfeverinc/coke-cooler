@@ -12,15 +12,15 @@
 <body>
 	<div class="background-gradient"></div>
 	<div class="menu-nav-container top-nav">
-		<div class="menu-item menu-nav-item col-sm-4">
+		<div class="menu-item menu-nav-item col-sm-4 css-mousedown">
 			<div class="menu-nav-item-bg"></div>
 			<a href="single-product.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
 		</div>
-		<div class="menu-item menu-nav-item col-sm-4">
+		<div class="menu-item menu-nav-item col-sm-4 css-mousedown">
 			<div class="menu-nav-item-bg"></div>
 			<a href="single-product.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
 		</div>
-		<div class="menu-item menu-nav-item col-sm-4">
+		<div class="menu-item menu-nav-item col-sm-4 css-mousedown">
 			<div class="menu-nav-item-bg"></div>
 			<a href="single-product.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
 		</div>
@@ -30,7 +30,7 @@
 		<h3 class="align-center">Global Equipment Innovation</h3>
 		<div class="menu-option">
 			<div class="option col-sm-6">
-				<a data-id="eqp-icon" href="" class="icon-mousedown">
+				<a data-id="eqp-icon" href="equipment.html" class="icon-mousedown">
 					<img src="assets/img/eqp-icon.png" alt=""><br>
 					<span>All Equipment</span>
 				</a>
@@ -45,15 +45,15 @@
 		<img class="company-logo" src="assets/img/coke-logo.png" alt="">
 	</div>
 	<div class="menu-nav-container bottom-nav">
-		<div class="menu-item menu-nav-item col-sm-4">
+		<div class="menu-item menu-nav-item col-sm-4 css-mousedown">
 			<div class="menu-nav-item-bg"></div>
 			<a href="single-product.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
 		</div>
-		<div class="menu-item menu-nav-item col-sm-4">
+		<div class="menu-item menu-nav-item col-sm-4 css-mousedown">
 			<div class="menu-nav-item-bg"></div>
 			<a href="single-product.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
 		</div>
-		<div class="menu-item menu-nav-item col-sm-4">
+		<div class="menu-item menu-nav-item col-sm-4 css-mousedown">
 			<div class="menu-nav-item-bg"></div>
 			<a href="single-product.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
 		</div>
@@ -64,7 +64,7 @@
 			<li><a class="menu-toggle" href="">Menu</a></li>
 		</ul>
 	</div>
-	<div class="menu-slideout-container">
+<div class="menu-slideout-container">
 		<a class="menu-close" href="">close</a>
 		<div class="menu-slide-out">
 			<div class="row row1">
@@ -72,7 +72,7 @@
 					<h1 class="col-sm-9">Explore global innovation!</h1>
 					<img src="assets/img/coke-logo.png" alt="Coke" class="col-sm-3">
 				</div>
-				<div class="menu-item col-sm-4">
+				<div class="menu-item col-sm-4 active">
 					<div class="menu-item-bg">	
 						<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
 					</div>
@@ -95,46 +95,106 @@
 				</div>
 			</div>
 			<div class="row row2 white-border-top">
-				<h2>Equipment</h2>
-				<div class="menu-item menu-nav-item col-sm-3">
-					<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
-					<a href="eqp-menu.html">Title</a>
-				</div>
-				<div class="menu-item menu-nav-item col-sm-3">
-					<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
-					<a href="eqp-menu.html">Title</a>
-				</div>
-				<div class="menu-item menu-nav-item col-sm-3">
-					<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
-					<a href="eqp-menu.html">Title</a>
-				</div>
-				<div class="menu-item menu-nav-item col-sm-3">
-					<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
-					<a href="eqp-menu.html">Title</a>
-				</div>
-				<div class="menu-item menu-nav-item col-sm-3">
-					<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
-					<a href="eqp-menu.html">Title</a>
-				</div>
-				<div class="menu-item menu-nav-item col-sm-3">
-					<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
-					<a href="eqp-menu.html">Title</a>
+				<h2 class="col-sm-9">Equipment</h2>
+			    <div id="carousel-slideout-products" class="carousel slide" data-ride="carousel">
+			    	<div class="slider-controls">
+					    <a class="slider-prev col-sm-6" href="#carousel-slideout-products" role="button" data-slide="prev">
+					     	<img src="assets/img/arrow-toggle.png" alt="arrow">
+					    </a>
+					    <a class="slider-next col-sm-6" href="#carousel-slideout-products" role="button" data-slide="next">
+					    	 <img src="assets/img/arrow-toggle.png" alt="arrow">
+					    </a>
+				    </div>
+					<div class="carousel-inner" role="listbox">
+				    	<div class="item active">
+							<div class="menu-item menu-nav-item col-sm-3">
+								<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+								<a href="eqp-menu.html">Title</a>
+							</div>
+							<div class="menu-item menu-nav-item col-sm-3">
+								<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+								<a href="eqp-menu.html">Title</a>
+							</div>
+							<div class="menu-item menu-nav-item col-sm-3">
+								<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+								<a href="eqp-menu.html">Title</a>
+							</div>
+							<div class="menu-item menu-nav-item col-sm-3">
+								<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+								<a href="eqp-menu.html">Title</a>
+							</div>
+							<div class="menu-item menu-nav-item col-sm-3">
+								<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+								<a href="eqp-menu.html">Title</a>
+							</div>
+							<div class="menu-item menu-nav-item col-sm-3">
+								<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+								<a href="eqp-menu.html">Title</a>
+							</div>
+							<div class="menu-item menu-nav-item col-sm-3">
+								<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+								<a href="eqp-menu.html">Title</a>
+							</div>
+							<div class="menu-item menu-nav-item col-sm-3">
+								<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+								<a href="eqp-menu.html">Title</a>
+							</div>
+						</div>
+						<div class="item">
+							<div class="menu-item menu-nav-item col-sm-3">
+								<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+								<a href="eqp-menu.html">Title</a>
+							</div>
+							<div class="menu-item menu-nav-item col-sm-3">
+								<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+								<a href="eqp-menu.html">Title</a>
+							</div>
+							<div class="menu-item menu-nav-item col-sm-3">
+								<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+								<a href="eqp-menu.html">Title</a>
+							</div>
+							<div class="menu-item menu-nav-item col-sm-3">
+								<a href="eqp-menu.html"><img src="assets/img/eqp-1.png" alt="Equipment"></a>
+								<a href="eqp-menu.html">Title</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="row row3">
 				<div class="section white-border-top">
-					<h2>Equipment Technology</h2>
-					<div class="menu-item col-sm-4">
-						<a data-id="tech-sound" href="tech-sound.html" class="icon-mousedown"><img src="assets/img/tech-sound.png" alt="Audio"></a>
-						<a href="tech-sound.html">Audio Reduction</a>
-					</div>
-					<div class="menu-item col-sm-4">
-						<a data-id="tech-ibeacon" href="tech-ibeacon.html" class="icon-mousedown"><img src="assets/img/tech-ibeacon.png" alt="Ibeacon"></a>
-						<a href="tech-ibeacon.html">iBeacon</a>
-					</div>
-					<div class="menu-item col-sm-4">
-						<a data-id="tech-light" href="tech-light.html" class="icon-mousedown"><img src="assets/img/tech-light.png" alt="Light"></a>
-						<a href="tech-light.html">Light</a>
+					<h2 class="col-sm-9">Equipment Technology</h2>
+					<div id="carousel-slideout-tech" class="carousel slide" data-ride="carousel">
+				    	<div class="slider-controls">
+						    <a class="slider-prev col-sm-6" href="#carousel-slideout-tech" role="button" data-slide="prev">
+						     	<img src="assets/img/arrow-toggle.png" alt="arrow">
+						    </a>
+						    <a class="slider-next col-sm-6" href="#carousel-slideout-tech" role="button" data-slide="next">
+						    	 <img src="assets/img/arrow-toggle.png" alt="arrow">
+						    </a>
+				   		 </div>
+					  	 <div class="carousel-inner" role="listbox">
+				    		<div class="item active">
+								<div class="menu-item col-sm-4">
+									<a data-id="tech-sound" href="tech-sound.html" class="icon-mousedown"><img src="assets/img/tech-sound.png" alt="Audio"></a>
+									<a href="tech-sound.html">Audio Reduction</a>
+								</div>
+								<div class="menu-item col-sm-4">
+									<a data-id="tech-ibeacon" href="tech-ibeacon.html" class="icon-mousedown"><img src="assets/img/tech-ibeacon.png" alt="Ibeacon"></a>
+									<a href="tech-ibeacon.html">iBeacon</a>
+								</div>
+								<div class="menu-item col-sm-4">
+									<a data-id="tech-light" href="tech-light.html" class="icon-mousedown"><img src="assets/img/tech-light.png" alt="Light"></a>
+									<a href="tech-light.html">Light</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="menu-item col-sm-4">
+									<a data-id="tech-color" href="tech-color.html" class="icon-mousedown"><img src="assets/img/tech-color.png" alt="Color"></a>
+									<a href="tech-color.html">Color</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="section align-center white-border-top">
@@ -144,8 +204,8 @@
 						<a href="technology.html">See All</a>
 					</div>
 				</div>
-			</div>
-		</div>
+		    </div>
+	   </div>
 	</div>
 	<div class="transparent-bg"></div>
 </body>

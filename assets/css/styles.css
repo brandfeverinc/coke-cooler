@@ -94,6 +94,7 @@ a{
 	border: none;
 	outline:none
 }
+.slider-controls img{width: 100%;}
 a:hover{
 	color: #fff;
 	text-decoration: none;
@@ -105,8 +106,9 @@ li{list-style: none;}
 	width: 100%;
 	height: 100%;
 	position: fixed;
-	z-index: 5;
+	z-index: 99;
 	top: 0;
+	left: 0;
 	background-color: rgba(0,0,0,.8);
 	display: none;
 }
@@ -198,10 +200,6 @@ a.hm-item-description{font-size: 19px; line-height: 20px}
 /*===============================================
 Menu Page
 ===============================================*/
-.menu-nav-container{
-	overflow: auto;
-	padding-top: 70px;
-}
 .menu-nav-item a{margin-top: 0;}
 .menu-nav-item img{
 	width: 40%;
@@ -209,19 +207,21 @@ Menu Page
 .menu-nav-item-bg{
 	position: absolute;
     top: 10%;
-    background: url("../img/menu-item-bg.png") no-repeat;
-    background-size: contain;
-    background-position: center center;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 80%;
     width: 65%;
-    height: 80%;
+    height: 75%;
     z-index: -1;
-    margin-left: 12%;
+    margin-left: 11%;
 }
-.bottom-nav{
-	position: fixed;
-	bottom: 70px;
-	width: 100%;
+
+.menu-item .active{
+    background-color: transparent;
+    border: 15px solid #fff;
 }
+
+.bottom-nav{width: 100%;}
 .menu-option{
 	width: 90%;
 	padding: 50px 45px;
@@ -242,20 +242,37 @@ Menu Page
 .company-logo{
 	margin: 40px auto;
 	display: block;
-	width: 60% !important;
-	margin-left: 19% !important;
+	width: 60%;
+	margin-left: 19%;
 }
 
 .product-menu-content{
-	 position: absolute;
-  	 top: 55%;
-  	 left: 50%;
-  	 transform: translate(-50%, -60%);
-  	 width: 80%;
+	 display: block;
+	 width: 90%;
+	 margin-left: 5%;
+}
+
+@media (min-width: 1024px) {
+	.product-menu-content{
+		 position: absolute;
+	  	 top: 55%;
+	  	 left: 50%;
+	  	 transform: translate(-50%, -60%);
+	  	 width: 80%;
+	}
+	.bottom-nav{
+		position: fixed;
+		bottom: 70px;
+	}
+	.menu-nav-container{
+		overflow: auto;
+		padding-top: 70px;
+	}
 }
 .product-menu-content .option img{
 	max-width: 160px
 }
+
 
 /*===============================================
 Right Nav
@@ -266,6 +283,7 @@ Right Nav
   transform: translateX(-50%);
   right: -140px;
 }
+
 .right-nav ul{
 	-ms-transform: rotate(-90deg); /* IE 9 */
     -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
@@ -293,7 +311,23 @@ Right Nav
 	left: 100%;
 	display: none;
 	top: 5%;
+	z-index: 100;
 }
+.menu-slideout-container .slider-controls{
+	width: 80px;
+	float: right;
+	margin-bottom: 20px;
+}
+.menu-slideout-container .slider-controls a{
+	padding-left: 0;
+	padding-right: 0;
+	min-width: 40px;
+}
+.menu-slideout-container .slider-controls img{
+	width: 85%;
+	float: left;
+}
+#carousel-slideout-products{min-height: 690px}
 .menu-slide-out{
 	position: relative;
     z-index: 7;
@@ -301,7 +335,11 @@ Right Nav
     top: 0;
     padding: 40px;
     display: inline-block;
-}										
+}
+.menu-slide-out .active{
+    background-color: #B30C08;
+}	
+
 .menu-close{
 	background-color: #fff;
 	color: #f40000 !important;
@@ -347,6 +385,7 @@ Right Nav
 }
 .menu-slide-out .menu-item{
 	margin-bottom: 20px;
+	padding: 10px;
 }
 .menu-slide-out .menu-item a{
 	font-size: 15px;
@@ -358,7 +397,7 @@ Right Nav
 .row3 .menu-item{padding: 0;}
 .row3 .section:nth-child(2) img{width: 48.5%;}
 .row .menu-item a {margin-top: 0}
-.section img{margin-bottom: 15px;}
+.section .menu-item img{margin-bottom: 15px;}
 /*===============================================
 left Nav
 ===============================================*/
@@ -392,8 +431,14 @@ left Nav
 	color: #fff;
 	border: none;
 }
-.product-menu-content h1{font-size: 70px;}
-.product-menu-content h3{font-size: 45px;font-family: 'gotham_extralightregular';width: 100%;margin:0;}
+.product-menu-content h1{font-size: 40px;}
+.product-menu-content h3{font-size: 25px;font-family: 'gotham_extralightregular';width: 100%;margin:0;}
+.product-menu-content .company-logo{width: 60%}
+@media (min-width: 1024px) {
+	.product-menu-content h1{font-size: 70px;}
+	.product-menu-content h3{font-size: 45px;}
+	.product-menu-content .company-logo{width: 30%; margin-left: 35%;}
+}
 /*===============================================
 Product Page
 ===============================================*/
@@ -458,13 +503,13 @@ Product Page
 	text-align: center;
 	margin: 0;
 }
-.next a img{
+.next-view a img{
 	-ms-transform: rotate(180deg); /* IE 9 */
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
     transform: rotate(180deg);
 }
-.prev a img,.next a img{width: 100%;}
-.next a, .prev a{
+.prev-view a img,.next-view a img{width: 100%;}
+.next-view a, .prev-view a{
     width: 25%;
     margin-left: 16%;
     background-color: transparent !important;
@@ -660,7 +705,7 @@ Product Page
 Technology Menu Page
 ===============================================*/
 
-header.technology{
+header.technology, header.equipment{
 	border-bottom: 1px solid #fff;
 	padding-bottom: 20px;
 	margin-bottom: 40px;
@@ -684,15 +729,34 @@ header.technology div{
 	color: #f40000;
 }
 
-.technology-menu-items{
-	float: left;
+.technology-menu-items, .equipment-menu-items{
     text-align: center;
     width: 96.5%;
     margin-left: 1.5%;
 }
-.technology-menu-item a {
-	display: block;
+.equipment-menu-items .menu-item{
+	margin-bottom: 100px;
+	position: relative;
+}
+.equipment-menu-items .menu-item .menu-nav-item-bg{
+	background-color: transparent;
+	border: 10px solid #fff;
+	top: 28%;
+	height: 58%;
+}
+/*//Need to code for tv*/
+.equipment-menu-items .menu-item .active{
+	background-color: #fff;
+	border: 0;
+}
+.equipment-menu-items .menu-item .equipment-title{
 	font-size: 25px;
+	font-family: 'gotham_bookregular';
+	margin-top: 45px;
+}
+.technology-menu-item a, .equipment-menu-item a  {
+	display: block;
+	font-size: 22px;
 }
 .technology-menu-item a:nth-child(2) {margin-top: 10px;}
 .technology-menu-item{margin-bottom: 70px;float: left;}
@@ -718,7 +782,37 @@ header.technology div{
 	width: 27%;
 }
 .tech-slider-toggle h5{float: left;font-size: 20px;margin: 0;}
-
+.equipment-wrap .slider-controls, .tech-wrap .slider-controls{
+	display: inline-block;
+	width: 20%;
+	margin-left: 40%;
+}
+.tech-wrap .slider-controls{
+	margin-left: 0;
+}
+.slider-next{
+	float: right;
+	-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+#carousel-ip .slider-controls{
+	width: 30%;
+}
+#carousel-ip .slider-controls a{
+	width: 25%;
+	float: left;
+}
+#carousel-ip .slider-controls h5{
+	float: left;
+	width: 50%;
+	text-align: center;
+	font-size: 20px;
+	margin-top: 10px;
+}
+#carousel-ip .slider-controls{
+	margin-top: 10px;
+}
 /*Sound*/
 .technology-content h1{
 	font-size: 64px;
@@ -772,10 +866,10 @@ header.technology div{
 	margin-left: 15%;
 }
 .tech-description{clear: both;margin-top: 20px;float: left;font-size: 29px;font-weight: 200;}
-.technology-menu li.active{border:0!important;padding:0 !important;}
-.technology-menu li.active a{border:15px solid #fff;}
+.technology-menu li.active-item{border:0!important;padding:0 !important;}
+.technology-menu li.active-item a{border:15px solid #fff;}
 .technology-content > div{display: none;}
-.technology-content .active{display: block;}
+.technology-content .active-item{display: block;}
 .pod{
 	border-radius: 85px;
 	border: 1px solid #fff;
@@ -816,11 +910,19 @@ background-size: contain;}
 .light-test-right{background-color: #fff;height: 100%;margin-top: -103px;}
 .handle{position: absolute;right:-30px;top: 45%;}
 .befor-after-container p{text-align: center;margin: 0;}
+.technology-single .slider-controls{
+	float: right;
+	width: 12%;
+	margin-top: 10px;
+}
+.technology-single .slider-controls a{
+	padding-left: 0;
+	padding-right: 0;
+}
 
 
 
-
-
+/*digital keyboard*/
 .vkb-css-keyboard-icon {
 	position: relative;
 	top: 1px;

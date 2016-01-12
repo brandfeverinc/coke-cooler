@@ -154,7 +154,7 @@ $( document ).ready(function() {
 		}
 	});
 	// turns off slide auto increment 
-	$('#rotate-product-carousel').carousel({
+	$('#rotate-product-carousel, #carousel-equipment, #carousel-slideout-products, #carousel-slideout-tech, #tech-single, #carousel-ip').carousel({
 	  interval: false
 	});
 
@@ -245,9 +245,9 @@ $( document ).ready(function() {
 	$('.technology-menu a').on('click',function(e){
 		e.preventDefault();
 		var this_tab = $(this).attr('class');
-		$('.active').removeClass('active');
-		$(this).parent().addClass('active');
-		$('.technology-content .'+this_tab).addClass('active');
+		$('.active-item').removeClass('active-item');
+		$(this).parent().addClass('active-item');
+		$('.technology-content .'+this_tab).addClass('active-item');
 	});
 
 	// toggles pod active state (and soon play sound)
@@ -270,6 +270,9 @@ $( document ).ready(function() {
 		$(this).find('img').attr('src','assets/img/'+img_src+'-active.png');
 	});
 
+	$('.css-mousedown').on('touchstart mousedown',function(){
+		$(this).find('.menu-nav-item-bg').addClass('active');
+	});
 
 	
     
