@@ -13,7 +13,7 @@
 	<script  src="assets/js/touch.js"></script>
 	<script type="text/javascript">
 		$( document ).ready(function() {
-			$( "#draggable" ).draggable({ axis: "x", scroll: false, containment:[-150, 0, 250, 0],handle: ".handle"});
+			$( "#draggable" ).draggable({ axis: "x", scroll: false, containment:[70, 0, 520, 0],handle: ".handle"});
 		});
 	</script>
 </head>
@@ -70,7 +70,11 @@
 			<div class="test-1">
 				<div class="light-test-container">
 					<div class="light-test-left col-sm-12">
-						<div id="draggable" class="dragger"><img class="handle" src="assets/img/handle.png" alt="handle"></div>
+						<div id="draggable">
+							<div class="dargger-left"></div>
+							<img class="handle" src="assets/img/handle.png" alt="handle">
+							<div class="dargger-right"></div>
+						</div>
 					</div>
 					<div class="befor-after-container">
 						<div class="col-sm-6">

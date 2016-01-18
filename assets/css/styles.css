@@ -898,17 +898,28 @@ header.technology div{
 }
 .befor-after-container{position: relative;z-index: 31;width: 97%;top:-110px;}
 .befor-after-container img{margin: 0 auto;display: block;}
-.dragger{
-	background-color: rgba(235, 247, 254,.2	);
-	height: 100%;
-	width: 100%;
-	left: -50%;
-	border-right: 3px solid #000;
+.dargger-left{
+	position: absolute;
+    height: 810px;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(235, 247, 254,.2	);
+    left: -50%;
+    border-right: 5px solid #000;
+}
+
+.dargger-right{
+	position: absolute;
+    height: 810px;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(115, 237, 244,.2	);
+    right: -50%;
 }
 .light-test-left{height: 810px;margin-top: 20px;overflow: hidden;background: url('../img/bottle.png') #fff; -webkit-background-size: contain;
 background-size: contain;}
 .light-test-right{background-color: #fff;height: 100%;margin-top: -103px;}
-.handle{position: absolute;right:-30px;top: 45%;}
+.handle{position: absolute;left:50%;top: 50%; z-index: 9999;transform: translate(-54%, 350px);}
 .befor-after-container p{text-align: center;margin: 0;}
 .technology-single .slider-controls{
 	float: right;
@@ -1091,7 +1102,6 @@ background-size: contain;}
     background-color: #222222;
     color: #FFFFFF;
 }
-
 
 
 
