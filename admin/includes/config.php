@@ -1,0 +1,17 @@
+<?php
+///////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Change Log
+//
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+/* ..................................................... CONFIG
+/*  set whether this on development mode or production mode'$mode':
+			0 = Production; 
+			1 = Development
+*/
+$mode = 1;
+
+$appName = "Coca-Cola Cooler Administration System";
+
+?>

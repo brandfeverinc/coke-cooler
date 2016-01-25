@@ -5,12 +5,12 @@ var info_data = {
 	design:     "designdesigndesigndesigndesigndesigndesigndesigndesigndesigndesigndesi"
 };
 
-var info_images = ['test-img-1.png','test-img-2.png','test-img-3.png'];
+//var info_images = ['test-img-1.png','test-img-2.png','test-img-3.png'];
 
 //youtube embed links
-var product_videos = ['https://www.youtube.com/embed/lqT_dPApj9U', 'https://www.youtube.com/embed/A45sjUX7mp0'];
+//var product_videos = ['https://www.youtube.com/embed/lqT_dPApj9U', 'https://www.youtube.com/embed/A45sjUX7mp0'];
 
-var product_videos = {"videos":[
-    {"video":"https://www.youtube.com/embed/lqT_dPApj9U", "title":"Title 1"},
-    {"video":"https://www.youtube.com/embed/A45sjUX7mp0", "title":"Title 2"}
-]}
+// var product_videos = {"videos":[
+//     {"video":"https://www.youtube.com/embed/lqT_dPApj9U", "title":"Title 1"},
+//     {"video":"https://www.youtube.com/embed/A45sjUX7mp0", "title":"Title 2"}
+// ]}

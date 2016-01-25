@@ -1,0 +1,190 @@
+-- Coke Cooler Project
+-- Database Design
+
+CREATE TABLE homepage_image (
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    homepage_image_url VARCHAR(255) NOT NULL,
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    sort_order SMALLINT(6) NOT NULL DEFAULT '9990',
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE demonstration_category (
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    demonstration_category_name VARCHAR(255) NOT NULL,
+    demonstration_category_description TEXT NOT NULL,
+    demonstration_category_image_url VARCHAR(255) NOT NULL,
+    contact_email VARCHAR(120) NOT NULL,
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    sort_order SMALLINT(6),
+    PRIMARY KEY (id)
+);
+INSERT INTO demonstration_category VALUES('', 'Equipment', '', '', '', 1, 10); -- i.e., Coolers
+INSERT INTO demonstration_category VALUES('', 'Packaging', '', '', '', 1, 20);
+INSERT INTO demonstration_category VALUES('', 'ETA', '', '', '', 1, 30);
+
+CREATE TABLE demonstration_item ( -- cooler, packaging or ETA
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    demonstration_category_id INT(10) UNSIGNED NOT NULL DEFAULT '0',
+    demonstration_item_name VARCHAR(255) NOT NULL, -- (cooler or packaging name)
+    background_color VARCHAR(20) NOT NULL,
+    contact_email VARCHAR(120) NOT NULL,
+    sort_order SMALLINT(6) NOT NULL DEFAULT '9990', -- first 6 are "featured"
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE demonstration_item_image (
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    demonstration_item_id INT(10) UNSIGNED NOT NULL DEFAULT '0', -- unique with demonstration_item_image_side
+    demonstration_item_image_side ENUM('Front','Left','Right','Back','Open') NOT NULL DEFAULT 'Front', -- unique with demonstration_item_id
+    demonstration_item_image_url VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+ALTER TABLE demonstration_item_image ADD UNIQUE (demonstration_item_id, demonstration_item_image_side);
+
+CREATE TABLE demonstration_item_image_highlight (
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    demonstration_item_image_id INT(10) UNSIGNED NOT NULL DEFAULT '0', 
+    hotspot_x DECIMAL(8,3) NOT NULL DEFAULT '0.000', -- use %
+    hotspot_y DECIMAL(8,3) NOT NULL DEFAULT '0.000', -- use %
+    hotspot_width DECIMAL(8,3) NOT NULL DEFAULT '0.000', -- use %
+    hotspot_height DECIMAL(8,3) NOT NULL DEFAULT '0.000', -- use %
+    hotspot_button_image_url VARCHAR(255) NOT NULL,
+    demonstration_item_image_highlight_info TEXT,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE demonstration_item_info_type (
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    demonstration_item_info_type_name VARCHAR(24) NOT NULL,
+    PRIMARY KEY (id)
+);
+INSERT INTO demonstration_item_info_type VALUES('', 'About');
+INSERT INTO demonstration_item_info_type VALUES('', 'Specs');
+INSERT INTO demonstration_item_info_type VALUES('', 'Technology');
+INSERT INTO demonstration_item_info_type VALUES('', 'Design');
+
+CREATE TABLE demonstration_item_info (
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    demonstration_item_id INT(10) UNSIGNED NOT NULL DEFAULT '0',  -- unique with demonstration_category_id
+    demonstration_category_id INT(10) UNSIGNED NOT NULL DEFAULT '0',  -- unique with demonstration_item_id
+    demonstration_item_info TEXT NOT NULL,
+    PRIMARY KEY (id)
+);
+ALTER TABLE demonstration_item_info ADD UNIQUE (demonstration_item_id, demonstration_category_id);
+
+CREATE TABLE demonstration_item_info_image (
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    demonstration_item_info_id INT(10) UNSIGNED NOT NULL DEFAULT '0',
+    demonstration_item_info_image_url VARCHAR(255) NOT NULL,
+    sort_order SMALLINT(6) NOT NULL DEFAULT '9990',
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE demonstration_item_video (
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    demonstration_item_id INT(10) UNSIGNED NOT NULL DEFAULT '0', 
+    demonstration_item_video_title VARCHAR(255) NOT NULL,
+    demonstration_item_video_url VARCHAR(255) NOT NULL,
+    demonstration_item_video_placeholder_image_url VARCHAR(255) NOT NULL,
+    sort_order SMALLINT(6) NOT NULL DEFAULT '9990',
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE demonstration_item_gallery_image (
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    demonstration_item_gallery_image_description TEXT NOT NULL,
+    demonstration_item_gallery_image_url VARCHAR(255) NOT NULL,
+    sort_order SMALLINT(6) NOT NULL DEFAULT '9990',
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE demonstration_item_presentation ( 
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    demonstration_item_id INT(10) UNSIGNED NOT NULL DEFAULT '0', 
+    demonstration_item_presentation_name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE demonstration_item_presentation_image (
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    demonstration_item_presentation_id INT(10) UNSIGNED NOT NULL,
+    demonstration_item_presentation_image_url VARCHAR(255) NOT NULL,
+    sort_order SMALLINT(6) NOT NULL DEFAULT '9990',
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE technology (
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    technology_name VARCHAR(32) NOT NULL,
+    technology_button_image_url VARCHAR(255) NOT NULL,
+    technology_headline VARCHAR(255) NOT NULL, -- used on drill-down (technology sample) page
+    sort_order SMALLINT(6) NOT NULL DEFAULT '9990',
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE technology_info (
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    technology_id INT(10) UNSIGNED NOT NULL DEFAULT '0',
+    technology_info_name VARCHAR(32) NOT NULL,
+    technology_info_description TEXT NOT NULL,
+    technology_info_button_image_url VARCHAR(255) NOT NULL,
+    technology_info_template ENUM('standard', 'sound', 'lighting') NOT NULL DEFAULT 'standard', -- html file to use as template for info
+    sort_order SMALLINT(6) NOT NULL DEFAULT '9990',
+    PRIMARY KEY (id)
+);
+
+-- 3 template for above:
+-- #1: for most pages which are laid out the same.
+-- #2: for "Can you hear the difference?" page (images are differently shaped, go below text, play sounds)
+-- #3: for "Can you see the light?" page (has sliding widget to show color difference)
+
+-- this is for "Can you hear the difference?" page:
+CREATE TABLE technology_info_recording (
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    technology_info_id INT(10) UNSIGNED NOT NULL DEFAULT '0',
+    technology_info_recording_url VARCHAR(255) NOT NULL,
+    sort_order SMALLINT(6) NOT NULL DEFAULT '9990',
+    PRIMARY KEY (id)   
+);
+
+CREATE TABLE technology_info_image (
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    technology_info_id INT(10) UNSIGNED NOT NULL DEFAULT '0',
+    technology_info_image_url VARCHAR(255) NOT NULL,
+    sort_order SMALLINT(6) NOT NULL DEFAULT '9990',
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE patent ( -- intellectual property
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    patent_name VARCHAR(32) NOT NULL,
+    patent_image_url VARCHAR(255) NOT NULL,
+    patent_text TEXT NOT NULL,
+    sort_order SMALLINT(6) NOT NULL DEFAULT '9990',
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE setting (
+    id INT(10) UNSIGNED NOT NULL auto_increment,
+    setting_name VARCHAR(32) NOT NULL, -- known values: 'SCREEN_SAVER', 'HOW_TO_SCREEN_SHARE', 'BACK_END_LOGIN', 'MAIN_HEADLINE'
+    setting_value TEXT NOT NULL,
+    PRIMARY KEY (id)
+);
+INSERT INTO setting VALUES ('', 'Screen Saver', '');
+INSERT INTO setting VALUES ('', 'How to Screen Share', '');
+INSERT INTO setting VALUES ('', 'Back End Login', '');
+INSERT INTO setting VALUES ('', 'Main Headline', '');
+
+CREATE TABLE IF NOT EXISTS system_user (
+  id int(11) NOT NULL auto_increment,
+  first_name varchar(30) NOT NULL,
+  last_name varchar(30) NOT NULL,
+  username varchar(30) NOT NULL,
+  password varchar(100) NOT NULL,
+  email_address varchar(50) NOT NULL,
+  date_created datetime NOT NULL,
+  is_active tinyint(1) NOT NULL DEFAULT TRUE,
+  is_admin tinyint(1) NOT NULL DEFAULT TRUE,
+  PRIMARY KEY  (id)
+);

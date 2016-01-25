@@ -1,0 +1,5 @@
+AuthType Basic
+AuthName "Coca-Cola Cooler Project"
+AuthUserFile /var/www/cc-cooler.phase3mcdev.com/.htpasswd
+Require valid-user
+
