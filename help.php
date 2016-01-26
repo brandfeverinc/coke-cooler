@@ -26,9 +26,9 @@ $back_end_login_text = $oSetting[0]->SettingValue;
 			background: rgba(0,0,0,0.4);
  */
 			background: #f40000; /* Old browsers */
-			background: -moz-linear-gradient(right,  #f40000 0%, #cd1d20 20%, #a00305 100%); /* FF3.6-15 */
-			background: -webkit-linear-gradient(right,  #f40000 0%,#cd1d20 20%,#a00305 100%); /* Chrome10-25,Safari5.1-6 */
-			background: linear-gradient(to left,  #f40000 0%,#cd1d20 20%,#a00305 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			background: -moz-linear-gradient(right,  transparent 0%, #cd1d20 20%, #a00305 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(right,  transparent 0%,#cd1d20 20%,#a00305 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to left,  transparent 0%,#cd1d20 20%,#a00305 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 			padding: 10px;
 		}
 		p {
@@ -42,7 +42,7 @@ $back_end_login_text = $oSetting[0]->SettingValue;
 	<div class="wrap equipment-wrap">
 		<header class="equipment">
 			<div class="col-sm-6"><a class="main-logo" href="/">Coca-Cola</a></div>
-			<div class="col-sm-6 header-tagline">Link</div>
+			<div class="col-sm-6 header-tagline">Help</div>
 		</header>
 		<div style="padding-left:10px;">
 			<h2>How to Screen Share</h2>

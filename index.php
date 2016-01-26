@@ -52,7 +52,7 @@
 			    $oCategory = $objCategory->getAllCategoryByIsActive('1', 'sort_order ASC');
 			    foreach ($oCategory as $category) {
 			        if ($category->IsActive == '1') {
-        				echo '<div class="menu-item col-xs-6">' . PHP_EOL;
+        				echo '<div class="menu-item col-xs-4">' . PHP_EOL;
         				echo '	<div class="menu-item-bg">' . PHP_EOL;
         				echo '		<a href="main-menu.php?id=' . $category->Id . '"><img src="/' . $objCategory->GetPath() . $category->CategoryImageUrl . '" alt="' . $category->CategoryName . '"></a>' . PHP_EOL;
         				echo '	</div>' . PHP_EOL;
@@ -63,6 +63,7 @@
 			    }
 			    ?>
 			</div>
+			<div style="position:absolute; bottom:20px; right:20px; width:60px; height:50px; overflow: auto;"><p style="text-align:center; margin:0; line-height:33px;"><a class="help" href="help.php"><img src="/assets/img/help_Icon.png" alt=""></a></p></div>
 		</div>
 </body>
 </html>

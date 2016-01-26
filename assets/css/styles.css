@@ -160,12 +160,14 @@ Home
 	top: 0;
 	left: 0;
 	display: none;
+	width: 100%;
 }
 .overlay{
 	background-color: rgba(244,0,0,.7);
 	padding: 85px 0;
 	width: 100%;
 	margin-top: 20%;
+	position: relative;
 }
 .overlay img{
 	margin-left: 20%;
@@ -191,9 +193,15 @@ Home
     min-height: 210px;
     margin-left: 15%;
 }
+.overlay .menu-item:last-child{padding-top: 56px;}
 .menu-item img{
 	width: 60%;
 	margin-left: 0;
+}
+.overlay .menu-item:last-child img{    
+	width: 78%;
+    margin-top: 18px;
+    margin-left: 3px;
 }
 .menu-item a{
 	font-size: 40px;
@@ -203,7 +211,9 @@ Home
 	margin-top: 20px;
 	font-family: 'gotham_lightregular';
 }
-a.hm-item-description{font-size: 19px; line-height: 20px}
+.overlay .menu-item:last-child > a{margin-top: 80px;}
+.menu-slide-out .menu-item:last-child .menu-item-bg > a{margin-top: 40px;}
+a.hm-item-description{font-size: 19px; line-height: 20px;margin-top: 20px !important;}
 .home-menu-container{overflow-y: hidden}
 /*===============================================
 Menu Page
@@ -214,14 +224,13 @@ Menu Page
 }
 .menu-nav-item-bg{
 	position: absolute;
-    top: 10%;
+    top: 16%;
     background-color: #fff;
     border-radius: 50%;
-    width: 80%;
     width: 65%;
     height: 75%;
     z-index: -1;
-    margin-left: 11%;
+    margin-left: 14%;
 }
 
 .menu-item .active{
@@ -229,7 +238,11 @@ Menu Page
     border: 15px solid #fff;
 }
 
-.bottom-nav{width: 100%;}
+.bottom-nav{
+	width: 100%;
+	position: fixed;
+	bottom: 150px;
+}
 .menu-option{
 	width: 90%;
 	padding: 50px 45px;
@@ -256,22 +269,15 @@ Menu Page
 
 .product-menu-content{
 	 display: block;
-	 width: 90%;
-	 margin-left: 5%;
+	 position: absolute;
+  	 top: 55%;
+  	 left: 50%;
+  	 transform: translate(-50%, -70%);
+  	 width: 80%;
 }
 
 @media (min-width: 1024px) {
-	.product-menu-content{
-		 position: absolute;
-	  	 top: 55%;
-	  	 left: 50%;
-	  	 transform: translate(-50%, -60%);
-	  	 width: 80%;
-	}
-	.bottom-nav{
-		position: fixed;
-		bottom: 70px;
-	}
+
 	.menu-nav-container{
 		overflow: auto;
 		padding-top: 70px;
@@ -281,6 +287,10 @@ Menu Page
 	max-width: 160px
 }
 
+.help img{
+	width: 50px;
+	height: auto;
+}
 
 /*===============================================
 Right Nav
@@ -372,6 +382,13 @@ Right Nav
 .menu-slide-out .menu-item img {
     width: 60%;
 }
+.menu-slide-out .row1 .menu-item:last-child img {
+    width: 86%;
+    padding: 20px 0 0 0;
+}
+.menu-slide-out .row1 .menu-item:last-child h2 {
+	margin-top: 57px;
+}
 .row{padding: 20px 0;}
 .row1,.row2{padding: 5px 0 20px 0;}
 .row h1{font-size: 26px;}
@@ -400,12 +417,13 @@ Right Nav
 }
 .menu-slide-out .row3 .menu-item img {
 	width: 100%;
-	max-width: 70px;
+	max-width: 120px;
 }
 .row3 .menu-item{padding: 0;}
-.row3 .section:nth-child(2) img{width: 48.5%;}
+.row3 .section:nth-child(2) img{width: 38%;margin-top: 14px;}
 .row .menu-item a {margin-top: 0}
 .section .menu-item img{margin-bottom: 15px;}
+.row2 .menu-item a:last-child{margin-top: 20px;}
 /*===============================================
 left Nav
 ===============================================*/
@@ -835,7 +853,7 @@ header.technology div{
 .equipment-menu-items .menu-item .menu-nav-item-bg{
 	background-color: transparent;
 	border: 10px solid #fff;
-	top: 28%;
+	top: 9%;
 	height: 58%;
 }
 /*//Need to code for tv*/

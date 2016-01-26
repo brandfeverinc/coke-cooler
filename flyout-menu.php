@@ -219,7 +219,7 @@ include_once('inc/classes/Technology.php');
 			/////////////////////////////////////////////////////
 			-->
 			
-			<div style="position:absolute; bottom:20px; right:20px; padding:10px; background:rgba(0,0,0,0.3); width:50px; height:50px; border-radius:50px;"><p style="text-align:center; margin:0; line-height:33px;"><a href="help.php" style="font-size:14px; color:red;">Link</a></p></div>
+			<div style="position:absolute; bottom:20px; right:20px; width:60px; height:60px; overflow: auto;"><p style="text-align:center; margin:0; line-height:33px;"><a class="help" href="help.php"><img src="/assets/img/help_Icon.png" alt=""></a></p></div>
 	   </div>
 	</div>
 	<!--
