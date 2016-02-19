@@ -52,6 +52,73 @@ $background = $bgcolor . " none repeat scroll 0% 0%"; // this is used in single-
 	<script type="text/javascript" src="assets/js/data.js"></script>
 	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/js/scripts.js"></script>
+	<script type="text/javascript">
+        $(document).ready(function() {
+            // swipe left/right on slideshows: touch handling
+            document.addEventListener('touchstart', handleTouchStart, false);
+            document.addEventListener('touchmove', handleTouchMove, false);
+
+            var xDown = null;
+            var yDown = null;
+            var carousel_id = null;  // use to call carousel "next" or "prev" actions
+
+            function handleTouchStart(e) {
+                if (e.target.id == "carousel-equipment" || $(e.target).parents("#carousel-equipment").size()) { 
+                    xDown = e.touches[0].clientX;
+                    yDown = e.touches[0].clientY;
+                    carousel_id = "#carousel-equipment";
+                }
+                else if (e.target.id == "carousel-ip" || $(e.target).parents("#carousel-ip").size()) { 
+                    xDown = e.touches[0].clientX;
+                    yDown = e.touches[0].clientY;
+                    carousel_id = "#carousel-ip";
+                }
+                else {
+                    xDown = null;
+                    yDown = null;
+                    carousel_id = null
+                }
+            };                                                
+
+            function handleTouchMove(e) {
+                if (!xDown || !yDown) {
+                    return;
+                }
+
+                var xUp = e.touches[0].clientX;
+                var yUp = e.touches[0].clientY;
+
+                var xDiff = xDown - xUp;
+                var yDiff = yDown - yUp;
+
+                // check for most significant touch movement direction
+                if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                    if ( xDiff > 0 && xDiff > 10) {
+                        // left swipe
+                        $(carousel_id).carousel("next");
+                        e.stopPropagation();
+                    }
+                    else if (xDiff < 0 && xDiff < -10) {
+                        // right swipe
+                        $(carousel_id).carousel("prev");
+                        e.stopPropagation();
+                    }
+                } else {
+                    if ( yDiff > 0 && yDiff > 2) {
+                        // up swipe
+                    }
+                    else if (yDiff < 0 && yDiff < -2) {
+                        // down swipe
+                    }
+                }
+                /* reset values */
+                xDown = null;
+                yDown = null;
+                carousel_id = null;
+            };
+            
+        }); // end document ready
+	</script>
 </head>
 <style>
 	.background-gradient {

@@ -132,7 +132,12 @@ function pageContent() {
         if ($i > 0) {
             $product_videos .= ",";
         }
-        $product_videos .= '{"video":"/' . $video->GetPath() . $video->ItemVideoUrl . '", "title":"' . $video->ItemVideoTitle . '"}';
+        $vpath = "/" . $video->GetPath();
+        if (preg_match("/http/", $video->ItemVideoUrl)) {
+            // a URL, don't get from local directory:
+            $vpath = "";
+        }
+        $product_videos .= '{"video":"' . $vpath . $video->ItemVideoUrl . '", "title":"' . $video->ItemVideoTitle . '"}';
         $i++;
     }
     $video_count = $i;
@@ -208,6 +213,46 @@ function pageContent() {
             <?php echo $product_shows; ?>
 
             $(document).ready(function() {              
+                $("#email_form_submit").on('click touch', function() {
+
+                    if ($("#name").val() == "" || $("#email").val() == "" || $("#question").val() == "") {
+                        alert("All fields are required.");
+                        return false;
+                    };
+                    if (!validateEmail($("#email").val())) {
+                        alert("Email address is invalid.")
+                        return false;
+                    }
+                
+                    $.ajax({
+                    url: "ajax_send_email.php",
+                        type: 'GET',
+                        data: {
+                            name: $("#name").val(),
+                            email: $("#email").val(),
+                            question: $("#question").val(),
+                            item_id: "<?php echo $item->Id; ?>",
+                            category_id: "<?php echo $item->CategoryId; ?>"
+                        },
+                        success: function(data){
+                            if (data == '1') {
+                                $("#thankDiv").show();
+                                $("#form-div").hide();
+                                $("#name").val("");
+                                $("#email").val("");
+                                $("#question").val("");
+                            }
+                            else {
+                                alert("Error: Please try again.");
+                            }
+                        },
+                        error: function(){
+                            console.log('error');
+                        }
+                    });
+                    return false;
+                });
+
 				$('.prod-icon').on('click',function(){
                 	show_needs_full_load = true;
                 	current_show = 0;
@@ -251,6 +296,11 @@ function pageContent() {
                 // adds info data to the lightbox
                 $('.info-menu-item').on('click touch',function () {
                 	show_needs_full_load = true;
+                    $("#name").val("");
+                    $("#email").val("");
+                    $("#question").val("");
+                    $("#form-div").show();
+                    $("#thankDiv").hide();
                 	current_show = 0;
                     $('.product-lightbox-container .top-section').html('<div id="product-info-carousel" class="carousel slide" data-ride="carousel"><div class="carousel-inner" role="listbox"></div></div>');
                     nav_controls = "";
@@ -326,7 +376,10 @@ function pageContent() {
                     	else if (ext == "wmv") {
                     		mimetype = "video/x-ms-wmv";
                     	}
-                        $('#product-video-carousel .carousel-inner').append('<div class="item"><video style="width:560px; height:315px;" controls><source src="'+data.video+'" type="'+mimetype+'"></video><div class="video-info-container"><div class="carousel-caption">'+data.title+'</div><div class="fullscreen"></div></div>');
+                    	else if (data.video.indexOf("webm")) {
+                    	    mimetype = "video/webm";
+                    	}
+                        $('#product-video-carousel .carousel-inner').append('<div class="item"><video style="width:560px; height:315px;"><source src="'+data.video+'" type="'+mimetype+'"></video><div class="video-info-container"><div class="carousel-caption">'+data.title+'</div><div class="fullscreen"></div><div class="videoplay" ><img src="assets/img/red_play.png" style="width:100%; height:100%;"></div><div class="videopause" style="display:none;"><img src="assets/img/red_pause.png" style="width:100%; height:100%;"></div><div class="video-time" style="float:right; margin-right:20px; color:red; display:none;">Length: <span id="video-length"></span></div></div>');
                     });
                     nav_controls = "";
                     if (product_videos.videos.length > 1) {
@@ -411,6 +464,8 @@ function pageContent() {
                  	$(".product-lightbox-container .top-section").css("border-bottom", "0");
                  	$(".product-lightbox-container .modalx-container").css("background-color", "transparent");
                  	$(".product-lightbox-container .modalx-container").css("margin-right", "2%");
+                 	$(".product-lightbox-container .videoplay, .product-lightbox-container .videopause").css("margin-right", "0");
+                 	$(".product-lightbox-container .video-slider-controls").css("margin-top", "20px");
                  	$(".product-lightbox-container .video-info-container").css("width", "94%");
                  	$(".fullscreen").hide();
                  	$(".bottom-section").css("background-color", "black");
@@ -434,6 +489,23 @@ function pageContent() {
                  	$(".modaltitle-container").show();
                 });
 
+				$(".product-lightbox-container").on("click touch", ".videoplay", function() {
+					$("video").trigger('pause');
+					$(".product-lightbox-container #product-video-carousel .item.active video").trigger('play');
+					$(".videoplay").hide();
+					$(".videopause").show();
+					//var duration_secs = $(".product-lightbox-container #product-video-carousel .item.active video").get(0).duration;
+					//var minutes = Math.round(duration_secs / 60);
+					//var seconds = Math.round(duration_secs % 60);
+					//$("#video-length").text(minutes + ":" + seconds);
+				});
+				
+				$(".product-lightbox-container").on("click touch", ".videopause, .video-info-container .next, .video-info-container .prev", function() {
+					$("video").trigger('pause');
+					$(".videopause").hide();
+					$(".videoplay").show();
+				});
+
 				$(".product-lightbox-container").on("slid.bs.carousel", "#product-video-carousel", function() {
                  	$(".modaltitle-container p").text($(".item.active .video-info-container .carousel-caption").text());
 				});
@@ -444,39 +516,65 @@ function pageContent() {
 				});
 				
 				// swipe left/right on slideshows: touch handling
-				document.ontouchmove = function(e){
-					if ((e.target.id == "top-section" || $(e.target).parents("#top-section").size()) || (e.target.id == "bottom-section" || $(e.target).parents("#bottom-section").size())) { 
-						event.preventDefault();
-					}
-				}
-
 				document.addEventListener('touchstart', handleTouchStart, false);
 				document.addEventListener('touchmove', handleTouchMove, false);
 
 				var xDown = null;
 				var yDown = null;
-				var section = null;
+				var carousel_id = null;  // use to call carousel "next" or "prev" actions (default slideHandler)
+				var slideHandler = null; // determines how to do slide action (default or other)
+				var section = null;      // some swipes require this also for alternate or additional function call
+				var nextClass = null;    // some swipes require this also for alternate or additional function call
+				var prevClass = null;    // some swipes require this also for alternate or additional function call
 
 				function handleTouchStart(e) {
 					if (e.target.id == "top-section" || $(e.target).parents("#top-section").size()) { 
 						xDown = e.touches[0].clientX;
 						yDown = e.touches[0].clientY;
-						section = "";
+						slideHandler = "default"; // use default carousel action
+						if (e.target.id == "product-info-carousel" || $(e.target).parents("#product-info-carousel").size()) {
+						    carousel_id = "#product-info-carousel";
+						}
+						else if (e.target.id == "product-video-carousel" || $(e.target).parents("#product-video-carousel").size()) {
+						    carousel_id = "#product-video-carousel";
+						}
+						else if (e.target.id == "product-gallery-carousel" || $(e.target).parents("#product-gallery-carousel").size()) {
+						    carousel_id = "#product-gallery-carousel";
+						}
+						else if (e.target.id == "product-show-carousel" || $(e.target).parents("#product-show-carousel").size()) {
+						    carousel_id = "#product-show-carousel";
+						}
 					}
 					else if (e.target.id == "bottom-section" || $(e.target).parents("#bottom-section").size()) { 
 						xDown = e.touches[0].clientX;
 						yDown = e.touches[0].clientY;
-						section = ".bottom-bottom-container";
+						slideHandler = "bottom-div"; // uses slider-specific action
+						section = ".product-lightbox-container .bottom-bottom-container";
+						nextClass = " .next a:first";
+						prevClass = " .prev a:first";
+					}
+					else if (e.target.id == "rotate-product-carousel" || $(e.target).parents("#rotate-product-carousel").size()) { 
+						xDown = e.touches[0].clientX;
+						yDown = e.touches[0].clientY;
+						slideHandler = "rotate-prod"; // uses default carousel action AND slider-specific action
+						carousel_id = "#rotate-product-carousel";
+						section = ".rotate-menu-item-active";
+						nextClass = " .next-view";
+						prevClass = " .prev-view";
 					}
 					else {
 						xDown = null;
 						yDown = null;
+						carousel_id = null
+						slideHandler = null;
 						section = null;
+						nextClass = null;
+						prevClass = null;
 					}
 				};                                                
 
 				function handleTouchMove(e) {
-					if ( ! xDown || ! yDown ) {
+					if (!xDown || !yDown) {
 						return;
 					}
 
@@ -487,15 +585,27 @@ function pageContent() {
 					var yDiff = yDown - yUp;
 
 					// check for most significant touch movement direction
-					if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
+					if (Math.abs(xDiff) > Math.abs(yDiff)) {
 						if ( xDiff > 0 && xDiff > 10) {
 							// left swipe
-							$(".product-lightbox-container "+section+" .next a:first").click();
+							//$(section+nextClass).click();
+							if (slideHandler == "default" || slideHandler == "rotate-prod") {
+							    $(carousel_id).carousel("next");
+							}
+							if (slideHandler == "bottom-div" || slideHandler == "rotate-prod") {
+							   $(section+nextClass).click(); 
+							}
 							e.stopPropagation();
 						}
 						else if (xDiff < 0 && xDiff < -10) {
 							// right swipe
-							$(".product-lightbox-container "+section+" .prev a:first").click();
+							//$(section+prevClass).click();
+							if (slideHandler == "default" || slideHandler == "rotate-prod") {
+							    $(carousel_id).carousel("prev");
+							}
+							if (slideHandler == "bottom-div" || slideHandler == "rotate-prod") {
+							   $(section+prevClass).click();
+							}
 							e.stopPropagation();
 						}
 					} else {
@@ -509,7 +619,11 @@ function pageContent() {
 					/* reset values */
 					xDown = null;
 					yDown = null;
+					carousel_id = null;
+					slideHandler = null;
 					section = null;
+					nextClass = null;
+					prevClass = null;
 				};
 				
             }); // end document.ready

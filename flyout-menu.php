@@ -105,8 +105,71 @@ include_once('inc/classes/Technology.php');
 				$(".menu-item").removeClass("active");
 				$(this).addClass("active");
 			});
-		});
-		// href="/main-menu.php?id=' . $category->Id . '"
+
+            // swipe left/right on slideshows: touch handling
+            document.addEventListener('touchstart', handleTouchStartFlyout, false);
+            document.addEventListener('touchmove', handleTouchMoveFlyout, false);
+
+            var xDown = null;
+            var yDown = null;
+            var carousel_id = null;  // use to call carousel "next" or "prev" actions
+
+            function handleTouchStartFlyout(e) {
+                if (e.target.id == "carousel-slideout-products" || $(e.target).parents("#carousel-slideout-products").size()) { 
+                    xDown = e.touches[0].clientX;
+                    yDown = e.touches[0].clientY;
+                    carousel_id = "#carousel-slideout-products";
+                }
+                else if (e.target.id == "carousel-slideout-tech" || $(e.target).parents("#carousel-slideout-tech").size()) { 
+                    xDown = e.touches[0].clientX;
+                    yDown = e.touches[0].clientY;
+                    carousel_id = "#carousel-slideout-tech";
+                }
+                else {
+                    xDown = null;
+                    yDown = null;
+                    carousel_id = null
+                }
+            };                                                
+
+            function handleTouchMoveFlyout(e) {
+                if (!xDown || !yDown) {
+                    return;
+                }
+
+                var xUp = e.touches[0].clientX;
+                var yUp = e.touches[0].clientY;
+
+                var xDiff = xDown - xUp;
+                var yDiff = yDown - yUp;
+
+                // check for most significant touch movement direction
+                if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                    if ( xDiff > 0 && xDiff > 10) {
+                        // left swipe
+                        $(carousel_id).carousel("next");
+                        e.stopPropagation();
+                    }
+                    else if (xDiff < 0 && xDiff < -10) {
+                        // right swipe
+                        $(carousel_id).carousel("prev");
+                        e.stopPropagation();
+                    }
+                } else {
+                    if ( yDiff > 0 && yDiff > 2) {
+                        // up swipe
+                    }
+                    else if (yDiff < 0 && yDiff < -2) {
+                        // down swipe
+                    }
+                }
+                /* reset values */
+                xDown = null;
+                yDown = null;
+                carousel_id = null;
+            };	
+            
+        }); // end document ready
 	</script>
 	<div class="right-nav">
 		<ul>
