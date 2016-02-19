@@ -166,8 +166,9 @@ Home
 	background-color: rgba(244,0,0,.7);
 	padding: 85px 0;
 	width: 100%;
-	margin-top: 20%;
-	position: relative;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
 }
 .overlay img{
 	margin-left: 20%;
@@ -213,7 +214,7 @@ Home
 }
 .overlay .menu-item:last-child > a{margin-top: 80px;}
 .menu-slide-out .menu-item:last-child .menu-item-bg > a{margin-top: 40px;}
-a.hm-item-description{font-size: 19px; line-height: 20px;margin-top: 20px !important;}
+a.hm-item-description{font-size: 18px; line-height: 20px;margin-top: 20px !important;}
 .home-menu-container{overflow-y: hidden}
 /*===============================================
 Menu Page
@@ -274,6 +275,12 @@ Menu Page
   	 left: 50%;
   	 transform: translate(-50%, -70%);
   	 width: 80%;
+}
+.videoplay, .videopause {
+	height: 30px;
+	width: 30px;
+	float: right;
+	margin-right: 20px;
 }
 
 @media (min-width: 1024px) {
@@ -346,6 +353,10 @@ Right Nav
 	float: left;
 }
 #carousel-slideout-products{min-height: 690px}
+.menu-slideout-container #carousel-slideout-products .menu-item {
+    white-space: nowrap;
+}
+
 .menu-slide-out{
 	position: relative;
     z-index: 7;
@@ -457,8 +468,8 @@ left Nav
 	color: #fff;
 	border: none;
 }
-.product-menu-content h1{font-size: 40px;}
-.product-menu-content h3{font-size: 25px;font-family: 'gotham_extralightregular';width: 100%;margin:0;}
+.product-menu-content h1{font-size: 48px;}
+.product-menu-content h3{font-size: 30px;font-family: 'gotham_extralightregular';width: 100%;margin:0;}
 .product-menu-content .company-logo{width: 60%}
 @media (min-width: 1024px) {
 	.product-menu-content h1{font-size: 70px;}

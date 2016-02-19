@@ -64,6 +64,12 @@ $( document ).ready(function() {
 			$(".product-lightbox-container .top-section").css("background-color", "");
 			$(".product-lightbox-container .modalx-container").css("background-color", "");
 			$(".product-lightbox-container .modalx-container").css("margin-right", "");
+			$(".product-lightbox-container .videoplay, .product-lightbox-container .videopause").css("margin-right", "");
+            $(".product-lightbox-container .video-slider-controls").css("margin-top", "");
+			$(".product-lightbox-container .fullscreen").show();
+            $(".carousel-caption").show();
+            $(".bottom-top-container div h2").show();
+            $(".bottom-bottom-container").show();
 			$(".bottom-section").css("background-color", "");
 			$(".bottom-section").css("border-bottom", "");
 		}
@@ -85,6 +91,8 @@ $( document ).ready(function() {
 				$(".product-lightbox-container .top-section").css("background-color", "");
 				$(".product-lightbox-container .modalx-container").css("background-color", "");
 				$(".product-lightbox-container .modalx-container").css("margin-right", "");
+				$(".product-lightbox-container .videoplay, .product-lightbox-container .videopause").css("margin-right", "");
+            	$(".product-lightbox-container .video-slider-controls").css("margin-top", "");
 				$(".bottom-section").css("background-color", "");
 				$(".bottom-section").css("border-bottom", "");
 			});
@@ -126,7 +134,7 @@ $( document ).ready(function() {
 		}
 	});
 	// turns off slide auto increment 
-	$('#rotate-product-carousel, #carousel-equipment, #carousel-slideout-products, #carousel-slideout-tech, #tech-single, #carousel-ip').carousel({
+	$('#rotate-product-carousel, #carousel-equipment, #carousel-slideout-products, #carousel-slideout-tech, #tech-single, #carousel-ip, #product-video-carousel').carousel({
 	  interval: false
 	});
 
@@ -137,6 +145,7 @@ $( document ).ready(function() {
 		}, 300, function() {
 		    // Animation complete.
 		});
+		$(".product-lightbox-container #product-info-carousel").carousel('pause');
 	});
 
 	$(document).on('click', '.close-form', function(e){
@@ -145,7 +154,13 @@ $( document ).ready(function() {
 			top: "500px"
 		}, 300, function() {
 		    // Animation complete.
+            $("#name").val("");
+            $("#email").val("");
+            $("#question").val("");
+		    $("#form-div").show();
+		    $("#thankDiv").hide();
 		});
+		$(".product-lightbox-container #product-info-carousel").carousel('cycle');
 	});
 	
 	//info lightbox tabs
@@ -188,15 +203,26 @@ $( document ).ready(function() {
 	});
 
 	//mouse down icon states
-// 	$('.icon-mousedown').on('touchstart mousedown',function(){
-// 		var img_src = $(this).attr('data-id');
-// 		//$(this).find('img').attr('src','assets/img/'+img_src+'-active.png');
-// 		$(this).find('img').attr('src',img_src);
-// 	});
-// 
-// 	$('.css-mousedown').on('touchstart mousedown',function(){
-// 		$(this).find('.menu-nav-item-bg').addClass('active');
-// 	});
-	
-});
+	$('.icon-mousedown').on('touchstart mousedown',function(){
+		var img_src = $(this).attr('data-id');
+		//$(this).find('img').attr('src','assets/img/'+img_src+'-active.png');
+		$(this).find('img').attr('src',img_src);
+	});
 
+	$('.css-mousedown').on('touchstart mousedown',function(){
+		$(this).find('.menu-nav-item-bg').addClass('active');
+	});
+
+    // disable normal touch handling when inside sliders (so swipe works without secondary screen slide):
+    document.ontouchmove = function(e){
+        if ((e.target.id == "top-section" || $(e.target).parents("#top-section").size()) || (e.target.id == "bottom-section" || $(e.target).parents("#bottom-section").size()) || (e.target.id == "rotate-product-carousel" || $(e.target).parents("#rotate-product-carousel").size()) || (e.target.id == "carousel-slideout-products" || $(e.target).parents("#carousel-slideout-products").size()) || (e.target.id == "carousel-slideout-tech" || $(e.target).parents("#carousel-slideout-tech").size()) || (e.target.id == "tech-single" || $(e.target).parents("#tech-single").size())) { 
+            event.preventDefault();
+        }
+    }
+	
+}); // end document ready
+
+function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}

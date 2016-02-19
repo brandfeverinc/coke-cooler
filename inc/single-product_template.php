@@ -11,7 +11,7 @@
     <script type="text/javascript" src="/assets/js/jquery.virtualKeyboard.js"></script>
     <script type="text/javascript" src="/assets/js/scripts.js"></script>
     <script type="text/javascript">
-        $( document ).ready(function() {
+        $(document).ready(function() {
             $('.virtualKeyboard').vkb();
         });
     </script>
@@ -37,12 +37,17 @@
             <div class="form-section">
                 <h2>Request for information</h2>
                 <a href="" class="close-form"><img src="assets/img/modalx.png"></a>
-                <form action="">
-                    <input type="text" class="virtualKeyboard vkb-css-parent-input" placeholder="Name">
-                    <input type="text" class="virtualKeyboard vkb-css-parent-input" placeholder="Email">
-                    <input placeholder="What would you like to know?" class="virtualKeyboard vkb-css-parent-input">
-                    <input type="submit" value="Send">
-                </form>
+                <div id="form-div">
+                    <form name="email-form">
+                        <input type="text" name="name" id="name" class="virtualKeyboard vkb-css-parent-input" placeholder="Name">
+                        <input type="text" name="email" id="email" class="virtualKeyboard vkb-css-parent-input" placeholder="Email">
+                        <input type="text" name="question" id="question" placeholder="What would you like to know?" class="virtualKeyboard vkb-css-parent-input">
+                        <input type="submit" value="Send" id="email_form_submit">
+                    </form>
+                </div>
+                <div id="thankDiv" style="display:none;">
+                    <h2>Thank you!</h2>
+                </div>
             </div>
         </div>
     </div>

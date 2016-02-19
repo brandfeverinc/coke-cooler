@@ -71,14 +71,14 @@ $background = $bgcolor . " none repeat scroll 0% 0%"; // this is used in single-
 		<h3 class="align-center"><?php echo $objCategory->SubtitleHeading; ?></h3>
 		<div class="menu-option">
 			<div class="option col-sm-6">
-				<a data-id="assets/img/eqp-icon-active.png" href="items.php" class="icon-mousedown">
-					<img src="assets/img/eqp-icon.png" alt=""><br>
+				<a data-id="/<?php echo $objCategory->getPath() . $objCategory->ExploreAllActiveImageUrl; ?>" href="items.php" class="icon-mousedown">
+					<img src="/<?php echo $objCategory->getPath() . $objCategory->ExploreAllImageUrl; ?>" alt=""><br>
 					<span>All <?php echo $objCategory->CategoryName; ?></span>
 				</a>
 			</div>
 			<div class="option col-sm-6">
-				<a data-id="assets/img/tech-icon-active.png" href="technology.php" class="icon-mousedown">
-					<img src="assets/img/tech-icon.png" alt=""><br>
+				<a data-id="/<?php echo $objCategory->getPath() . $objCategory->TechnologyActiveImageUrl; ?>" href="technology.php" class="icon-mousedown">
+					<img src="/<?php echo $objCategory->getPath() . $objCategory->TechnologyImageUrl; ?>" alt=""><br>
 					<span>Technology</span>
 				</a>
 			</div>

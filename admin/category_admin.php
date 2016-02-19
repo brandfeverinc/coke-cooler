@@ -27,6 +27,14 @@ $aDropFields = array();
 $aDropFieldTypes = array();
 array_push($aDropFields, 'image_file_drop');
 array_push($aDropFieldTypes, 'image');
+array_push($aDropFields, 'image_file_drop2');
+array_push($aDropFieldTypes, 'image');
+array_push($aDropFields, 'image_file_drop3');
+array_push($aDropFieldTypes, 'image');
+array_push($aDropFields, 'image_file_drop4');
+array_push($aDropFieldTypes, 'image');
+array_push($aDropFields, 'image_file_drop5');
+array_push($aDropFieldTypes, 'image');
 
 // if form was submitted:
 if ($_POST['commit'] == "Cancel") {
@@ -42,7 +50,6 @@ if ($_POST['commit'] == "Save Category") {
         $obj->CategoryName = $_REQUEST["category_name"];
         $obj->CategoryDescription = $_REQUEST["category_description"];
         $obj->BackgroundColor = $_REQUEST["background_color"];
-        $obj->CategoryImageUrl = $_REQUEST["category_image_url"];
         $obj->TitleHeading = $_REQUEST["title_heading"];
         $obj->SubtitleHeading = $_REQUEST["subtitle_heading"];
         $obj->ContactEmail = $_REQUEST["contact_email"];
@@ -55,6 +62,10 @@ if ($_POST['commit'] == "Save Category") {
         
         $obj->handleFileUploads();
         $obj->handleDropFileUploads($aDropFields[0], 'CategoryImageUrl');
+        $obj->handleDropFileUploads($aDropFields[1], 'ExploreAllImageUrl');
+        $obj->handleDropFileUploads($aDropFields[2], 'ExploreAllActiveImageUrl');
+        $obj->handleDropFileUploads($aDropFields[3], 'TechnologyImageUrl');
+        $obj->handleDropFileUploads($aDropFields[4], 'TechnologyActiveImageUrl');
 
 		// redirect to listing list
 		header("Location:category_list.php");
@@ -66,7 +77,6 @@ if ($_POST['commit'] == "Save Category") {
         $obj->CategoryName = $_REQUEST["category_name"];
         $obj->CategoryDescription = $_REQUEST["category_description"];
         $obj->BackgroundColor = $_REQUEST["background_color"];
-        $obj->CategoryImageUrl = $_REQUEST["category_image_url"];
         $obj->TitleHeading = $_REQUEST["title_heading"];
         $obj->SubtitleHeading = $_REQUEST["subtitle_heading"];
         $obj->ContactEmail = $_REQUEST["contact_email"];
@@ -79,6 +89,10 @@ if ($_POST['commit'] == "Save Category") {
 
         $obj->handleFileUploads();
         $obj->handleDropFileUploads($aDropFields[0], 'CategoryImageUrl');
+        $obj->handleDropFileUploads($aDropFields[1], 'ExploreAllImageUrl');
+        $obj->handleDropFileUploads($aDropFields[2], 'ExploreAllActiveImageUrl');
+        $obj->handleDropFileUploads($aDropFields[3], 'TechnologyImageUrl');
+        $obj->handleDropFileUploads($aDropFields[4], 'TechnologyActiveImageUrl');
 		
 		// redirect to listing list
 		header("Location:category_list.php");
@@ -93,6 +107,10 @@ else {
         $category_description = $cat->CategoryDescription;
         $background_color = $cat->BackgroundColor;
         $category_image_url = $cat->CategoryImageUrl;
+        $explore_all_image_url = $cat->ExploreAllImageUrl;
+        $explore_all_active_image_url = $cat->ExploreAllActiveImageUrl;
+        $technology_image_url = $cat->TechnologyImageUrl;
+        $technology_active_image_url = $cat->TechnologyActiveImageUrl;
         $title_heading = $cat->TitleHeading;
         $subtitle_heading = $cat->SubtitleHeading;
         $contact_email = $cat->ContactEmail;
@@ -108,6 +126,10 @@ function PageContent() {
 	global $category_description;
 	global $background_color;
 	global $category_image_url;
+    global $explore_all_image_url;
+    global $explore_all_active_image_url;
+    global $technology_image_url;
+    global $technology_active_image_url;
 	global $title_heading;
 	global $subtitle_heading;
 	global $contact_email;
@@ -212,6 +234,58 @@ function PageContent() {
                     		    
                     		    // Set up Drop Area
                     		    echo DragAndDrop::CreateArea($aDropFields[0]);
+                    		    ?>
+                    		</td>
+                    	</tr>
+                    	<tr>
+                    		<td class="table-label" align="right" valign="top">Explore All Image File: </td>
+                    		<td><input type="file" class="slick" size="50" maxlength="200" name="image_file_exall" id="image_file_exall" value="<?php echo(htmlspecialchars($explore_all_image_url)); ?>"/>
+                    		    <?php
+                    		    if ($explore_all_image_url != '') {
+                    		        echo '<br ><strong>Current File:</strong> ' . $explore_all_image_url;
+                    		    }
+                    		    
+                    		    // Set up Drop Area
+                    		    echo DragAndDrop::CreateArea($aDropFields[1]);
+                    		    ?>
+                    		</td>
+                    	</tr>
+                    	<tr>
+                    		<td class="table-label" align="right" valign="top">Explore All Active Image File: </td>
+                    		<td><input type="file" class="slick" size="50" maxlength="200" name="image_file_exall_active" id="image_file_exall_active" value="<?php echo(htmlspecialchars($explore_all_active_image_url)); ?>"/>
+                    		    <?php
+                    		    if ($explore_all_active_image_url != '') {
+                    		        echo '<br ><strong>Current File:</strong> ' . $explore_all_active_image_url;
+                    		    }
+                    		    
+                    		    // Set up Drop Area
+                    		    echo DragAndDrop::CreateArea($aDropFields[2]);
+                    		    ?>
+                    		</td>
+                    	</tr>
+                    	<tr>
+                    		<td class="table-label" align="right" valign="top">Technology Image File: </td>
+                    		<td><input type="file" class="slick" size="50" maxlength="200" name="image_file_tech" id="image_file_tech" value="<?php echo(htmlspecialchars($technology_image_url)); ?>"/>
+                    		    <?php
+                    		    if ($technology_image_url != '') {
+                    		        echo '<br ><strong>Current File:</strong> ' . $technology_image_url;
+                    		    }
+                    		    
+                    		    // Set up Drop Area
+                    		    echo DragAndDrop::CreateArea($aDropFields[3]);
+                    		    ?>
+                    		</td>
+                    	</tr>
+                    	<tr>
+                    		<td class="table-label" align="right" valign="top">Technology Active Image File: </td>
+                    		<td><input type="file" class="slick" size="50" maxlength="200" name="image_file_tech_active" id="image_file_tech_active" value="<?php echo(htmlspecialchars($technology_active_image_url)); ?>"/>
+                    		    <?php
+                    		    if ($technology_active_image_url != '') {
+                    		        echo '<br ><strong>Current File:</strong> ' . $technology_active_image_url;
+                    		    }
+                    		    
+                    		    // Set up Drop Area
+                    		    echo DragAndDrop::CreateArea($aDropFields[4]);
                     		    ?>
                     		</td>
                     	</tr>
