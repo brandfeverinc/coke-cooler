@@ -4,7 +4,6 @@ if (!isset($_SESSION['sessCategory'])) {
     header('Location: index.php');
     exit;
 }
-
 include_once("inc/classes/Item.php");
 include_once("inc/classes/ItemImage.php");
 include_once("inc/classes/ItemInfo.php");
@@ -16,7 +15,6 @@ include_once("inc/classes/ItemPresentation.php");
 include_once("inc/classes/ItemPresentationImage.php");
 include_once("inc/classes/ItemImageHighlight.php");
 include_once("inc/classes/Category.php");
-
 $id = $_REQUEST['id'];
 $item = new Item($id);
 $bgcolor = "#F40000"; // Coke red default
@@ -31,7 +29,6 @@ else {
 	}
 }
 $background = $bgcolor . " none repeat scroll 0% 0%"; // this is used in single-product-template.php
-
 include("inc/single-product_template.php");
     
 function pageContent() {
@@ -77,7 +74,6 @@ function pageContent() {
     }
     $info_image_count = $i;
     $info_images = "var info_images = [" . $info_images . "];\n";
-
     $frontimage = '';
     $rightimage = '';
     $leftimage = '';
@@ -122,7 +118,6 @@ function pageContent() {
         $leftimage = '/' . $itemimage->GetPath() . $itemimage->ItemImageUrl;
         $leftimage_id = $itemimage->Id;
     }
-
     $objItemVideo = new ItemVideo();
     $oItemVideo = $objItemVideo->getAllItemVideoByItemId($id);
     $product_videos = '';
@@ -142,7 +137,6 @@ function pageContent() {
     }
     $video_count = $i;
     $product_videos = 'var product_videos = {"videos":[' . "\n" . $product_videos . "\n" . '    ]}' . "\n";
-
     $objItemGalleryImage = new ItemGalleryImage();
     $oItemGalleryImage = $objItemGalleryImage->getAllItemGalleryImageByItemId($id);
     $gallery_images = '';
@@ -176,7 +170,6 @@ function pageContent() {
             $product_shows .= ",";
         }
         $product_shows .= '{"thumbnail":"/' . $show->GetPath() . $show->ItemPresentationThumbnailUrl . '", "title":"' . $show->ItemPresentationName . '"}';
-
         $oItemPresentationImage = $objItemPresentationImage->getAllItemPresentationImageByItemPresentationId($show->Id);
         $j = 0;
         foreach ($oItemPresentationImage as $image) {
@@ -193,7 +186,6 @@ function pageContent() {
     $product_shows = 'var product_shows = {"shows":[' . "\n" . $product_shows . "\n" . '    ]}' . "\n";
     
     $objItemImageHighlight = new ItemImageHighlight();
-
 ?>
         <script type="text/javascript">
 			var current_show = 0;
@@ -211,10 +203,8 @@ function pageContent() {
             var show_images = [];
 <?php echo $product_show_images; ?>
             <?php echo $product_shows; ?>
-
             $(document).ready(function() {              
                 $("#email_form_submit").on('click touch', function() {
-
                     if ($("#name").val() == "" || $("#email").val() == "" || $("#question").val() == "") {
                         alert("All fields are required.");
                         return false;
@@ -252,7 +242,6 @@ function pageContent() {
                     });
                     return false;
                 });
-
 				$('.prod-icon').on('click',function(){
                 	show_needs_full_load = true;
                 	current_show = 0;
@@ -273,7 +262,6 @@ function pageContent() {
 					$(this).attr('src','/assets/img/'+newItem+'-active.png');
 					$(this).addClass('active-item');
 				});
-
 				$('.rotate-icon').on('click',function(){
                 	show_needs_full_load = true;
                 	current_show = 0;
@@ -292,7 +280,6 @@ function pageContent() {
 				});
 				
 				var nav_controls = ""; // used in lightbox add functions below
-
                 // adds info data to the lightbox
                 $('.info-menu-item').on('click touch',function () {
                 	show_needs_full_load = true;
@@ -328,7 +315,6 @@ function pageContent() {
                     }
                     $('#rotate-title').text(rotate_sides[rotate_current_item]);
                 });
-
                 $('.rotate-menu-item-active .prev-view').on('click touch', function() {
                     rotate_current_item--;
                     if (rotate_current_item < 0) {
@@ -336,7 +322,6 @@ function pageContent() {
                     }
                     $('#rotate-title').text(rotate_sides[rotate_current_item]);
                 });
-
                 $('.open-door').on('click',function(e){
                 	show_needs_full_load = true;
                 	current_show = 0;
@@ -360,7 +345,6 @@ function pageContent() {
                         });
                     }
                 });
-
                 // adds video data to the lightbox
                 $('.video-menu-item').on('click',function(){
                 	show_needs_full_load = true;
@@ -388,7 +372,6 @@ function pageContent() {
                     $('.product-lightbox-container .top-section').append('<div class="video-info-container"><div class="video-slider-controls">'+nav_controls+'</div></div>');
                     $('#product-video-carousel .carousel-inner .item').first().addClass('active');
                 });
-
                 // adds gallery data to the lightbox
                 $('.gallery-menu-item').on('click',function(){
                 	show_needs_full_load = true;
@@ -406,7 +389,6 @@ function pageContent() {
                     $('.product-lightbox-container .top-section').append('<div class="gallery-info-container"><div class="carousel-caption"><?php echo $gallery_caption; ?></div><div class="fullscreen"></div><div class="gallery-slider-controls">'+nav_controls+'</div></div>');
                     $('#product-gallery-carousel .carousel-inner .item').first().addClass('active');
                 });
-
                 // adds show/presentation data to the lightbox
                 $('.show-menu-item').on('click',function(){
                 	$('#bottom-slides div').removeClass("selected");
@@ -444,7 +426,6 @@ function pageContent() {
                 	var newPos = $("#bottom-slides-outer").scrollLeft() + ($("#bottom-slides-outer").width() / 3);
                 	$("#bottom-slides-outer").animate({scrollLeft: newPos}, 800);
                 });
-
                 $(".product-lightbox-container").on("click touch", "#bottom-show-prev", function() {
                 	var newPos = $("#bottom-slides-outer").scrollLeft() - ($("#bottom-slides-outer").width() / 3);
                 	$("#bottom-slides-outer").animate({scrollLeft: newPos}, 800);
@@ -458,7 +439,7 @@ function pageContent() {
                 
                 $(".product-lightbox-container").on("click touch", ".fullscreen", function() {
                  	$("#underlay").show();
-                 	$(".product-lightbox-container").css("width", "100%");
+                 	$(".product-lightbox-container").css("width", "100%").addClass('fullscreen-wrap');
                  	$(".product-lightbox-container").css("margin-left", "0");
                  	$(".product-lightbox-container .top-section").css("background-color", "black");
                  	$(".product-lightbox-container .top-section").css("border-bottom", "0");
@@ -488,7 +469,6 @@ function pageContent() {
                  	}
                  	$(".modaltitle-container").show();
                 });
-
 				$(".product-lightbox-container").on("click touch", ".videoplay", function() {
 					$("video").trigger('pause');
 					$(".product-lightbox-container #product-video-carousel .item.active video").trigger('play');
@@ -505,7 +485,6 @@ function pageContent() {
 					$(".videopause").hide();
 					$(".videoplay").show();
 				});
-
 				$(".product-lightbox-container").on("slid.bs.carousel", "#product-video-carousel", function() {
                  	$(".modaltitle-container p").text($(".item.active .video-info-container .carousel-caption").text());
 				});
@@ -518,7 +497,6 @@ function pageContent() {
 				// swipe left/right on slideshows: touch handling
 				document.addEventListener('touchstart', handleTouchStart, false);
 				document.addEventListener('touchmove', handleTouchMove, false);
-
 				var xDown = null;
 				var yDown = null;
 				var carousel_id = null;  // use to call carousel "next" or "prev" actions (default slideHandler)
@@ -526,7 +504,6 @@ function pageContent() {
 				var section = null;      // some swipes require this also for alternate or additional function call
 				var nextClass = null;    // some swipes require this also for alternate or additional function call
 				var prevClass = null;    // some swipes require this also for alternate or additional function call
-
 				function handleTouchStart(e) {
 					if (e.target.id == "top-section" || $(e.target).parents("#top-section").size()) { 
 						xDown = e.touches[0].clientX;
@@ -572,18 +549,14 @@ function pageContent() {
 						prevClass = null;
 					}
 				};                                                
-
 				function handleTouchMove(e) {
 					if (!xDown || !yDown) {
 						return;
 					}
-
 					var xUp = e.touches[0].clientX;
 					var yUp = e.touches[0].clientY;
-
 					var xDiff = xDown - xUp;
 					var yDiff = yDown - yUp;
-
 					// check for most significant touch movement direction
 					if (Math.abs(xDiff) > Math.abs(yDiff)) {
 						if ( xDiff > 0 && xDiff > 10) {

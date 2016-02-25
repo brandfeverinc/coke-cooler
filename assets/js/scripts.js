@@ -50,6 +50,7 @@ $( document ).ready(function() {
 	//closes lightbox
 	$('.modalx-container').on('click touch', function(e) {
 		e.preventDefault();
+		$(".product-lightbox-container").removeClass('fullscreen-wrap');
 		var activeItem = $('.active-item').parent().parent().attr('data-id');
 		$('.active-item').attr('src','/assets/img/'+activeItem+'.png');
 		$('.active-item').removeClass('active-item');
@@ -86,7 +87,7 @@ $( document ).ready(function() {
 				// unset fullscreen mode settings:
 				$("#underlay").hide();
 				$(".modaltitle-container").hide();
-				$(".product-lightbox-container").css("width", "");
+				$(".product-lightbox-container").css("width", "").removeClass('fullscreen-wrap');
 				$(".product-lightbox-container").css("margin-left", "");
 				$(".product-lightbox-container .top-section").css("background-color", "");
 				$(".product-lightbox-container .modalx-container").css("background-color", "");
