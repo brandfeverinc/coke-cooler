@@ -45,7 +45,7 @@ $background = $bgcolor . " none repeat scroll 0% 0%"; // this is used in single-
 	<script type="text/javascript">
 		$( document ).ready(function() {
 			//$( "#draggable" ).draggable({ axis: "x", scroll: false, containment:[-150, 0, 250, 0],handle: ".handle"});
-			$( "#draggable" ).draggable({ axis: "x", scroll: false, containment:[70, 0, 520, 0],handle: ".handle"});
+			$( ".ui-draggable" ).draggable({ axis: "x", scroll: false, containment:[70, 0, 520, 0],handle: ".handle"});
 
             // swipe left/right on slideshows: touch handling
             document.addEventListener('touchstart', handleTouchStart, false);
@@ -185,7 +185,7 @@ $background = $bgcolor . " none repeat scroll 0% 0%"; // this is used in single-
     			echo '	<div class="light-test-container">' . PHP_EOL;
     			echo '		<div class="light-test-left col-sm-12" style="background-image: url(' . $objLightTest->GetPath() . $lighttest->BackgroundImageFile . ');">' . PHP_EOL;
     			//echo '			<div id="draggable" class="dragger" style="background-color: rgba(' . $lighttest->RgbaValue . ');"><img class="handle" src="assets/img/handle.png" alt="handle"></div>' . PHP_EOL;
-    			echo '          <div id="draggable" class="ui-draggable" style="position: relative; left: 0px; top: 0px;">';
+    			echo '          <div id="draggable' . $iCnt . '" class="ui-draggable" style="position: relative; left: 0px; top: 0px;">';
     			echo '              <div class="dragger-left" style="background-color: rgba(' . $lighttest->RgbaValue . ');"></div>';
     			echo '              <img class="handle" src="assets/img/handle.png" alt="handle">';
     			echo '              <div class="dragger-right" style="background-color: rgba(' . $lighttest->RgbaValueRight . ');"></div>' . PHP_EOL;
